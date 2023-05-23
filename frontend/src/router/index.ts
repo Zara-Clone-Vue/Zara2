@@ -7,7 +7,11 @@ import HelpPage from '../components/HelpPage.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
- 
+  {
+    path: '/help',
+    name: 'Help',
+    component: HelpPage
+  },
   {
     path: '/login',
     name: 'login',
