@@ -1,11 +1,35 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import UserProfile from '../components/UserProfile.vue';
+import AddressForm from '../components/AddressForm.vue';
+import EmailForm from '../components/EmailForm.vue';
+import PasswordForm from '../components/PasswordForm.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/user-profile',
+    name: 'UserProfile',
+    component: UserProfile,
+  } ,
+  {
+    path: '/user-profile/address',
+    name: 'Address',
+    component: AddressForm,
+  },
+  {
+    path: '/user-profile/email',
+    name: 'Email',
+    component: EmailForm,
+  },
+  {
+    path: '/user-profile/password',
+    name: 'Password',
+    component: PasswordForm,
   },
   {
     path: '/about',
