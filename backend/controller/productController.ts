@@ -15,7 +15,7 @@ const getAllProducts = async (req: Request, res: Response) => {
 console.log(products.length)
   res.status(200).send(products);
 };
-const getAdultCategory = async (req: Request, res: Response) => {
+const getByCategory = async (req: Request, res: Response) => {
   const productRepository = AppDataSource.getRepository(product);
   const adultProducts = await productRepository.find({ where: { category: req.params.category },});
   res.status(200).send(adultProducts);
@@ -198,7 +198,7 @@ export default {
     // oneProduct,
     // search,
     getAllProducts,
-    getAdultCategory,
+    getByCategory,
     updateProduct,
     removeProduct,
     postProduct
