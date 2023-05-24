@@ -31,7 +31,7 @@ export const AppDataSource = new DataSource({
   username: "root",
   password: "root",
   database: "zara",
-  entities: [product,helpuser,cart],
+  entities: [product,helpuser,cart,user],
   synchronize: true,
   logging: false,
 })
@@ -41,6 +41,7 @@ AppDataSource.initialize()
     app.use("/api",routeProduct)
     app.use("/api",helpp)
     app.use("/api",cartrouter)
+    app.use("/api",router)
 
   
   })

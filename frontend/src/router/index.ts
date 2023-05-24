@@ -49,8 +49,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/user-profile/password',
     name: 'Password',
-    component: PasswordForm,
-    path: '/search',
+    component: PasswordForm,},
+    {path: '/search',
     name: 'search',
     component: search
   },
