@@ -5,8 +5,14 @@ import {product} from "../backend/model/product"
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
-// import routeUser from './routes/userRoutes'
+import router from './routes/profileUser'
+// import routerUser from './routes/userRoutes'
  import routeProduct from './routes/productRoutes';
+import { user } from "./model/profileUser";
+
+                                                              
+
+
 // import routeCart from './routes/cartRoutes';
 const app: Express = express();
 const port = 7000;
@@ -19,16 +25,17 @@ export const AppDataSource = new DataSource({
   host: "localhost",
   port: 3306,
   username: "root",
-  password: "Sarhane1991.",
+  password: "root",
   database: "zara",
-  entities: [product],
+  entities: [product,user],
   synchronize: true,
   logging: false,
 })
 AppDataSource.initialize()
     .then(() => {
     console.log("databse connected")
-    app.use("/api",routeProduct)})
+    app.use("/api",routeProduct)
+    app.use("/api",router)})
     .catch((error) => console.log(error))
 
 // app.use(routeUser)
