@@ -45,6 +45,8 @@ const postProduct = async (req: Request, res: Response) => {
   newProduct.image=req.body.image
   newProduct.price=req.body.price
   newProduct.category=req.body.category
+  newProduct.rating=req.body.rating
+  newProduct.times=req.body.times
   await AppDataSource.manager.save(newProduct)
   res.status(201).send(newProduct)
 }
