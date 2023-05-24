@@ -1,10 +1,3 @@
-import { Request, Response } from 'express';
-import { getRepository } from 'typeorm';
-import {AppDataSource} from '../index'
-
-
-
-
 // import user  from '../model/user';
 // import { Request,Response } from 'express';
 

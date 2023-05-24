@@ -3,6 +3,13 @@ import {product} from '../model/product';
 import {AppDataSource} from '../index'
 import { FindManyOptions } from 'typeorm';
 import { getRepository } from "typeorm";
+import cloudinary from "cloudinary"
+ const Cloudinary=cloudinary.v2
+Cloudinary.config({
+  cloud_name: "dzs2vkmbq",
+  api_key: "885481975116747",
+  api_secret: "oUO_ImkJff7SBOG-8kVGejsd8W4",
+});
 const getAllProducts = async (req: Request, res: Response) => {
   const products = await AppDataSource.getRepository(product).find();
 
@@ -15,6 +22,9 @@ const getAdultCategory = async (req: Request, res: Response) => {
 };
 const updateProduct = async (req: Request, res: Response) => {
   try{
+  
+    const cloudimage = await Cloudinary.uploader.upload(`${req.body.image}`);
+  
   const productRepository = AppDataSource.getRepository(product);
   let productToUpdate = await productRepository.findOneBy({id:Number(req.params.id)})
 if(productToUpdate){
@@ -23,6 +33,7 @@ if(productToUpdate){
   productToUpdate.price=req.body.price
   productToUpdate.rating=req.body.rating
   productToUpdate.times=req.body.times
+  productToUpdate.image=cloudimage.secure_url
   const updated=await productRepository.save(productToUpdate)
 res.status(201).send(updated)}
 }
@@ -40,15 +51,19 @@ const removeProduct = async (req: Request, res: Response) => {
 }
 
 const postProduct = async (req: Request, res: Response) => {
+ try{ const cloudimage = await Cloudinary.uploader.upload(`${req.body.image}`);
   const newProduct=new product()
   newProduct.clothesName=req.body.clothesName
-  newProduct.image=req.body.image
+  newProduct.image=cloudimage.secure_url
   newProduct.price=req.body.price
   newProduct.category=req.body.category
   newProduct.rating=req.body.rating
   newProduct.times=req.body.times
   await AppDataSource.manager.save(newProduct)
-  res.status(201).send(newProduct)
+  res.status(201).send(newProduct)}
+  catch(err) {
+    console.log(err)
+  }
 }
 // const all=(req: Request, res: Response)=>{
 //     product.getAllProducts((err: any, results: any) => {
