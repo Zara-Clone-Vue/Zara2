@@ -25,7 +25,7 @@ export const AppDataSource = new DataSource({
   host: "localhost",
   port: 3306,
   username: "root",
-  password: "Sarhane1991.",
+  password: "root",
   database: "zara",
   entities: [product,helpuser,cart],
   synchronize: true,
