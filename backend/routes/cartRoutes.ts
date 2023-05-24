@@ -29,7 +29,7 @@ const cartrouter = Router();
 cartrouter.get('/cart', allCarts);
 cartrouter.get('/cart/:id', cartForUser);
 cartrouter.post('/cart', toCart);
-cartrouter.delete('/cart/:id', remove);
+cartrouter.delete('/del/:id', remove);
 cartrouter.delete('/userCart/:id', removeCartOfUser);
 
 export default cartrouter;
