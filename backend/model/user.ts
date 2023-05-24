@@ -9,5 +9,5 @@
 // }
 
 
-// export default {getAll,remove} ;
+// export default {getAll,remove};
 
