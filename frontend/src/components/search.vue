@@ -24,12 +24,10 @@
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
-import ClothesDetail from './ClothesDetail';
+
 
 export default {
-  components: {
-    ClothesDetail,
-  },
+
   setup() {
     const data = ref([]);
     const searchText = ref('');

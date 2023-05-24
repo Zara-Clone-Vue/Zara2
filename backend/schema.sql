@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `zara`.`product` (
   `category` VARCHAR(255) NOT NULL,
   `rating` INT NOT NULL,
   `times` INT NOT NULL,
+
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 27
@@ -73,9 +74,24 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
+-- -----------------------------------------------------
+-- Table `zara`.`helpuser`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `zara`.`helpuser` (
+  `idhelp` INT NOT NULL AUTO_INCREMENT,
+  `namehelp` VARCHAR(255) NOT NULL,
+  `deschelp` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`idhelp`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 10
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
 
 INSERT INTO product (id, clothesName, image, price, category,rating,times)
@@ -106,3 +122,4 @@ VALUES
     (24, 'Red NAIL POLISH', 'https://static.zara.net/photos///2022/I/2/1/p/4400/400/630/2/w/750/4400400630_2_1_1.jpg?ts=1654901541748', 20, 'beauty',0,0),
     (25, 'EXTRA-LONG TRF JEANS', 'https://static.zara.net/photos///2023/V/0/1/p/6045/025/400/18/w/583/6045025400_1_1_1.jpg?ts=1682524673428', 200, 'women',0,0),
     (26, 'EMBROIDERED MIDI DRESS', 'https://static.zara.net/photos///2023/V/0/1/p/2895/994/251/2/w/750/2895994251_1_1_1.jpg?ts=1680510371284', 300, 'women',0,0)
+

@@ -7,6 +7,12 @@ import jwt from 'jsonwebtoken';
 import cors from 'cors';
 // import routeUser from './routes/userRoutes'
  import routeProduct from './routes/productRoutes';
+ import helpp from './routes/helpRoutes';
+import {  helpuser } from "./model/help";
+import cartrouter from './routes/cartRoutes'
+import {  cart } from "./model/cart";
+
+
 // import routeCart from './routes/cartRoutes';
 const app: Express = express();
 const port = 7000;
@@ -19,16 +25,23 @@ export const AppDataSource = new DataSource({
   host: "localhost",
   port: 3306,
   username: "root",
-  password: "Sarhane1991.",
+  password: "root",
   database: "zara",
-  entities: [product],
+  entities: [product,helpuser,cart],
   synchronize: true,
   logging: false,
 })
 AppDataSource.initialize()
     .then(() => {
     console.log("databse connected")
-    app.use("/api",routeProduct)})
+    app.use("/api",routeProduct)
+    app.use("/api",helpp)
+    app.use("/api",cartrouter)
+
+  
+  })
+  
+
     .catch((error) => console.log(error))
 
 // app.use(routeUser)
