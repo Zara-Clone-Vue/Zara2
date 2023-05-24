@@ -7,11 +7,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 -- -----------------------------------------------------
 -- Schema zara
 -- -----------------------------------------------------
@@ -20,18 +15,6 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 -- Schema zara
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `zara` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `mydb` ;
-
--- -----------------------------------------------------
--- Table `mydb`.`help`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`help` (
-  `idhelp` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `desc` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`idhelp`))
-ENGINE = InnoDB;
-
 USE `zara` ;
 
 -- -----------------------------------------------------
@@ -39,10 +22,12 @@ USE `zara` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `zara`.`product` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `clothesName` VARCHAR(45) NOT NULL,
   `image` VARCHAR(255) NOT NULL,
   `price` INT NOT NULL,
-  `category` VARCHAR(45) NOT NULL,
+  `clothesName` VARCHAR(255) NOT NULL,
+  `category` VARCHAR(255) NOT NULL,
+  `rating` INT ZEROFILL NOT NULL,
+  `times` INT ZEROFILL NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 27
@@ -91,6 +76,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
 INSERT INTO product (id, clothesName, image, price, category)
 VALUES
