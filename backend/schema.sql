@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `zara`.`user` (
   `username` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(225) NOT NULL,
+  `adress` VARCHAR(225) NOT NULL,
   `isAdmin` TINYINT NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
