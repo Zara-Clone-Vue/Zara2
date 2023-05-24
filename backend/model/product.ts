@@ -15,6 +15,12 @@ export class product{
 
     @Column()
     category!:string;
+
+    @Column()
+    rating!:number;
+
+    @Column()
+    times!:number;
 }
 // import connection from "../database/db";
 
