@@ -1,13 +1,14 @@
 import "reflect-metadata";
 import express, {Express} from 'express';
 import { DataSource } from 'typeorm';
-import {product} from "../backend/model/product"
+import {product} from "../backend/model/product" 
+import routeProduct from './routes/productRoutes';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
 import router from './routes/profileUser'
 // import routerUser from './routes/userRoutes'
- import routeProduct from './routes/productRoutes';
+
 import { user } from "./model/profileUser";
 
                                                               
@@ -19,7 +20,7 @@ import {  cart } from "./model/cart";
 
 // import routeCart from './routes/cartRoutes';
 const app: Express = express();
-const port = 7000;
+
 app.use(express.json());
 app.use(cors());
 app.use(express.json())
@@ -29,7 +30,7 @@ export const AppDataSource = new DataSource({
   host: "localhost",
   port: 3306,
   username: "root",
-  password: "root",
+  password: "Sarhane1991.",
   database: "zara",
   entities: [product,helpuser,cart,user],
   synchronize: true,
@@ -42,6 +43,7 @@ AppDataSource.initialize()
     app.use("/api",router)
     app.use("/api",routeProduct)
     app.use("/api",helpp)
+ 
     
 
   
@@ -101,7 +103,6 @@ app.listen(5000,()=> console.log("listening on port"+5000))
 
 
 
-// app.listen(3001,()=>{
-//     console.log('server listen to port '+3001)})
+
   
  

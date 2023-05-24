@@ -15,7 +15,7 @@ class ProfileUserController {
           const users = await profileUserRepository.find();
           console.log(users)
     
-          return res.json(users);
+          res.json(users);
         } catch (error) {
           console.error(error);
           return res.status(500).json({ message: 'Internal server error' });

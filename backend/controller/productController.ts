@@ -1,9 +1,9 @@
 import { Request,Response } from 'express';
 import {product} from '../model/product';
 import {AppDataSource} from '../index'
-import { FindManyOptions } from 'typeorm';
 import { getRepository } from "typeorm";
 import cloudinary from "cloudinary"
+
  const Cloudinary=cloudinary.v2
 Cloudinary.config({
   cloud_name: "dzs2vkmbq",
@@ -12,7 +12,7 @@ Cloudinary.config({
 });
 const getAllProducts = async (req: Request, res: Response) => {
   const products = await AppDataSource.getRepository(product).find();
-
+console.log(products.length)
   res.status(200).send(products);
 };
 const getAdultCategory = async (req: Request, res: Response) => {
@@ -40,6 +40,7 @@ res.status(201).send(updated)}
 catch (err) {
   res.status(500).send(err)
 }
+
 }
 
 const removeProduct = async (req: Request, res: Response) => {
