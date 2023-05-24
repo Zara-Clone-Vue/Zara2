@@ -5,18 +5,34 @@ import { user } from '../model/profileUser';
 
 class ProfileUserController {
 
-    async getUsers(req: Request, res: Response) {
-        try {
-          const profileUserRepository = AppDataSource.getRepository(user);
-          const users = await profileUserRepository.find();
-          console.log(users)
-    
-          return res.json(users);
-        } catch (error) {
-          console.error(error);
-          return res.status(500).json({ message: 'Internal server error' });
-        }
+  async getUsers(req: Request, res: Response) {
+    try {
+      const profileUserRepository = AppDataSource.getRepository(user);
+      const users = await profileUserRepository.find();
+      console.log(users)
+
+      return res.json(users);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+  }
+  async getUserById(req: Request, res: Response) {
+    try {
+     const profileUserRepository = AppDataSource.getRepository(user);
+      const users = await profileUserRepository.findBy({id:Number(req.params.id)});
+  
+      if (!users) {
+        return res.status(404).json({ message: 'User not found' });
       }
+   console.log(users);
+       return res.json(user);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+  }
+  
       async updateEmail(req: Request, res: Response) {
         const { id, email } = req.body;
       

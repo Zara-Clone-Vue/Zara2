@@ -5,6 +5,7 @@ const router = express.Router();
 const profileUserController = new ProfileUserController();
 
 router.get('/a', profileUserController.getUsers);
+router.get('/one/:id', profileUserController.getUserById)
 router.put('/email', profileUserController.updateEmail);
 router.put('/password', profileUserController.updatePassword);
 router.put('/address', profileUserController.addAddress);
