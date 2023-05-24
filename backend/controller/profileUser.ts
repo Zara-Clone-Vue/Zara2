@@ -4,9 +4,13 @@ import {AppDataSource} from '../index'
 import { user } from '../model/profileUser';
 
 class ProfileUserController {
+   
+  
 
     async getUsers(req: Request, res: Response) {
+      
         try {
+          //////////////////////////////////////////////////////////////
           const profileUserRepository = AppDataSource.getRepository(user);
           const users = await profileUserRepository.find();
           console.log(users)
