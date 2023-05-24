@@ -5,8 +5,12 @@ import {product} from "../backend/model/product"
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
-// import routeUser from './routes/userRoutes'
+import router from './routes/profileUser'
+// import routerUser from './routes/userRoutes'
  import routeProduct from './routes/productRoutes';
+import { user } from "./model/profileUser";
+
+                                                              
  import helpp from './routes/helpRoutes';
 import {  helpuser } from "./model/help";
 import cartrouter from './routes/cartRoutes'
