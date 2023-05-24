@@ -49,7 +49,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/user-profile/password',
     name: 'Password',
-    component: PasswordForm,
+    component: PasswordForm},
+    {
     path: '/search',
     name: 'search',
     component: search
@@ -65,7 +66,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 
