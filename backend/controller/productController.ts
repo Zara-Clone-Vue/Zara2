@@ -1,12 +1,55 @@
 import { Request,Response } from 'express';
 import {product} from '../model/product';
 import {AppDataSource} from '../index'
+import { FindManyOptions } from 'typeorm';
 import { getRepository } from "typeorm";
 const getAllProducts = async (req: Request, res: Response) => {
   const products = await AppDataSource.getRepository(product).find();
 
-  res.send(products);
+  res.status(200).send(products);
 };
+const getAdultCategory = async (req: Request, res: Response) => {
+  const productRepository = AppDataSource.getRepository(product);
+  const adultProducts = await productRepository.find({ where: { category: req.params.category },});
+  res.status(200).send(adultProducts);
+};
+const updateProduct = async (req: Request, res: Response) => {
+  try{
+  const productRepository = AppDataSource.getRepository(product);
+  let productToUpdate = await productRepository.findOneBy({id:Number(req.params.id)})
+if(productToUpdate){
+  productToUpdate.clothesName=req.body.clothesName
+  productToUpdate.category=req.body.category
+  productToUpdate.price=req.body.price
+  productToUpdate.rating=req.body.rating
+  productToUpdate.times=req.body.times
+  const updated=await productRepository.save(productToUpdate)
+res.status(201).send(updated)}
+}
+catch (err) {
+  res.status(500).send(err)
+}
+}
+
+const removeProduct = async (req: Request, res: Response) => {
+  const productRepository = AppDataSource.getRepository(product)
+  const productToRemove = await productRepository.findOneBy({id:Number(req.params.id)})
+  if(productToRemove)
+  await productRepository.remove(productToRemove)
+  res.status(204).send("successfully removed")
+}
+
+const postProduct = async (req: Request, res: Response) => {
+  const newProduct=new product()
+  newProduct.clothesName=req.body.clothesName
+  newProduct.image=req.body.image
+  newProduct.price=req.body.price
+  newProduct.category=req.body.category
+  newProduct.rating=req.body.rating
+  newProduct.times=req.body.times
+  await AppDataSource.manager.save(newProduct)
+  res.status(201).send(newProduct)
+}
 // const all=(req: Request, res: Response)=>{
 //     product.getAllProducts((err: any, results: any) => {
 //         if (err) {
@@ -138,5 +181,9 @@ export default {
     // edit,
     // oneProduct,
     // search,
-    getAllProducts
+    getAllProducts,
+    getAdultCategory,
+    updateProduct,
+    removeProduct,
+    postProduct
 }

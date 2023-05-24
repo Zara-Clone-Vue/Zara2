@@ -11,6 +11,10 @@ import router from './routes/profileUser'
 import { user } from "./model/profileUser";
 
                                                               
+ import helpp from './routes/helpRoutes';
+import {  helpuser } from "./model/help";
+import cartrouter from './routes/cartRoutes'
+import {  cart } from "./model/cart";
 
 
 // import routeCart from './routes/cartRoutes';
@@ -27,7 +31,7 @@ export const AppDataSource = new DataSource({
   username: "root",
   password: "root",
   database: "zara",
-  entities: [product,user],
+  entities: [product,helpuser,cart],
   synchronize: true,
   logging: false,
 })
@@ -35,7 +39,13 @@ AppDataSource.initialize()
     .then(() => {
     console.log("databse connected")
     app.use("/api",routeProduct)
-    app.use("/api",router)})
+    app.use("/api",helpp)
+    app.use("/api",cartrouter)
+
+  
+  })
+  
+
     .catch((error) => console.log(error))
 
 // app.use(routeUser)

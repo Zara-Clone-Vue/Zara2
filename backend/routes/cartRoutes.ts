@@ -13,3 +13,23 @@
 // routeCart.delete('/userCart/:id',cart.removeCartOfUser)
 
 // export default routeCart;
+
+// src/routes/cartRoutes.ts
+import { Router } from 'express';
+import {
+  allCarts,
+  cartForUser,
+  toCart,
+  remove,
+  removeCartOfUser,
+} from '../controller/cartController';
+
+const cartrouter = Router();
+
+cartrouter.get('/cart', allCarts);
+cartrouter.get('/cart/:id', cartForUser);
+cartrouter.post('/cart', toCart);
+cartrouter.delete('/cart/:id', remove);
+cartrouter.delete('/userCart/:id', removeCartOfUser);
+
+export default cartrouter;
