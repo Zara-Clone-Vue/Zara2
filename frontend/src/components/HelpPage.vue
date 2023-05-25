@@ -2,7 +2,8 @@
   <div class="helpContainer">
     <div class="containerr">
     <div class="helpQ">COMMENT POUVONS-NOUS VOUS AIDER ?</div>
-    <input type="search" placeholder="RECHERCHER" class="SearchInput" />
+    <input  type="search" placeholder="RECHERCHER" class="SearchInput" />
+    <button onClick={getHelp}> Help</button>
     <div class="Line"></div>
   </div>
   </div>
