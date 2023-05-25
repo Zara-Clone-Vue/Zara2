@@ -28,7 +28,7 @@ class ProfileUserController {
         return res.status(404).json({ message: 'User not found' });
       }
    console.log(users);
-       return res.json(user);
+       return res.json(users);
     } catch (error) {
       console.error(error);
       return res.status(500).json({ message: 'Internal server error' });
