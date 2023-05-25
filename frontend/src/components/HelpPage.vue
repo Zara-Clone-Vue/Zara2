@@ -2,9 +2,20 @@
   <div class="helpContainer">
     <div class="containerr">
     <div class="helpQ">COMMENT POUVONS-NOUS VOUS AIDER ?</div>
-    <input  type="search" placeholder="RECHERCHER" class="SearchInput" />
-    <button onClick={getHelp}> Help</button>
-    <div class="Line"></div>
+    <input  type="search" placeholder="RECHERCHER" class="SearchInput" 
+    v-model="helpText"
+    @input="getHelp"
+    />
+    <div class="Line">
+       <div v-for="item in data" :key="item.id">
+              
+              <div >
+              <img  :src="item.image" alt="" />
+              <h3> Answer : </h3>{{ item.namehelp }}
+             
+              </div>
+            </div>
+    </div>
   </div>
   </div>
 </template>
@@ -16,24 +27,37 @@ import axios from 'axios';
 export default {
   setup() {
     const data = ref([]);
+    const helpText = ref('');
 
-    const getHelp = () => {
+    const getHelp = (e:any) => {
+      const query = e.target.value.trim();
+      helpText.value = query;
+
+      if (query === '') {
+        data.value = [];
+        return;
+      }
+
       axios
         .get('http://localhost:5000/api/help')
         .then((response) => {
           data.value = response.data;
+          console.log(response);
         })
         .catch((error) => {
           console.error(error);
         });
     };
 
-    onMounted(getHelp);
 
     return {
-      data
+      data,
+      helpText,
+      getHelp,
     };
-  }
+  },
+
+
 };
 </script>
 

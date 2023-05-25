@@ -23,6 +23,7 @@ export default {
   setup() {
     const hommeShow = ref('');
     const sidebarOpen = ref(false);
+
     const activeDiv = ref(0);
     const router = useRouter();
 
@@ -31,16 +32,19 @@ export default {
       hommeShow.value = homme;
     };
 
+
     const handleToggleSidebar = () => {
       sidebarOpen.value = !sidebarOpen.value;
     };
 
     return {
+
       hommeShow,
       sidebarOpen,
       activeDiv,
       handleDivClick,
       handleToggleSidebar,
+
     };
   },
 };

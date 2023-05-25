@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div class="md-form md-outline">
       <input
         class="form-control"
@@ -10,13 +11,25 @@
       />
     </div>
     <div class="search-results">
-      <div
-        class="clothes-detail"
-        v-for="el in data"
-        :key="el.id"
-      >
-        <ClothesDetail :el="el" />
-      </div>
+
+      <div >
+<div id="app">
+  <ul>
+    <div class="containerimg">
+            <div v-for="item in data" :key="item.id">
+              
+              <div >
+              <img  :src="item.image" alt="" />
+              <li><h3> Clothes Name : </h3>{{ item.clothesName }}</li>
+              <li> <h3>The price : </h3> {{item.price}}</li>
+              <li> <h3>Rating : </h3> {{item.rating}}</li>
+              </div>
+            </div>
+            </div>
+          </ul>
+</div>
+</div>
+
     </div>
   </div>
 </template>
@@ -53,8 +66,7 @@ export default {
       data,
       searchText,
       handleSearch,
-    };
-  },
+
 };
 </script>
 
@@ -75,4 +87,14 @@ export default {
 .clothes-detail {
   /* Your styles here */
 }
+
+
+.form-control {
+  width: 100%;
+  background: none;
+  border:none;
+  font-size: 12px;
+}
+
 </style>
+

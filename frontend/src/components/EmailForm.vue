@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="handleSubmit">
    
-    <div>
+    <div class="email">
       <label>Current Email:</label>
       <input type="email" v-model="currentEmail" :readonly="true" />
     </div>
@@ -12,6 +12,11 @@
     <button type="submit">Save</button>
   </form>
 </template>
+<style>
+.email{
+  margin-top: 150px;
+}
+</style>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
