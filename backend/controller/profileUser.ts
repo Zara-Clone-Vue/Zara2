@@ -20,7 +20,7 @@ class ProfileUserController {
   async getUserById(req: Request, res: Response) {
     try {
      const profileUserRepository = AppDataSource.getRepository(user);
-      const users = await profileUserRepository.findBy({id:Number(req.params.id)});
+      const users = await profileUserRepository.findOneBy({id:Number(req.params.id)});
   
       if (!users) {
         return res.status(404).json({ message: 'User not found' });
