@@ -24,14 +24,16 @@
           </div>
           <div class="left-logos">
             <div class="recherche">
-            <router-link to="/search" >
+            <router-link to="/search" class="ss">
               RECHERCHER
               </router-link>
             </div>
 
-            <div class ="connecte">SE CONNECTER</div>
+            <router-link to="/login" class="ss">SE CONNECTER</router-link>
 
-            <div class ="help">AIDE</div>
+            <router-link to="/help" class="ss">
+              AIDE
+              </router-link>
 
             <div class ='cart'>
               <svg
@@ -134,6 +136,7 @@ import HommeCategory from './HommeCategory.vue';
 import FemmeCategory from './FemmeCategory.vue';
 import EnfantCategory from './EnfantCategory.vue';
 import search from "./search.vue";
+import help from "./HelpPage.vue"
 
 export default defineComponent({
   data() {
@@ -155,7 +158,8 @@ export default defineComponent({
     HommeCategory,
     FemmeCategory,
     EnfantCategory,
-    search
+    search,
+    help
   }
 });
 </script>
@@ -265,7 +269,13 @@ img {
   right: 20%;
   width: 120px;
   border-bottom: solid 1px #000;
+  
 }
+.ss {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 .sidebar {
   position: fixed;
