@@ -6,13 +6,15 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import ClothesDetail from './ClothesDetail';
+import ClothesDetail from './clothesDetail.vue';
 import axios from 'axios';
 
 export default {
   components: {
     ClothesDetail
   },
+ 
+
   setup() {
     const data = ref([]);
 

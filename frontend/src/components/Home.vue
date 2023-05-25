@@ -21,12 +21,12 @@ import { useRouter } from 'vue-router';
 
 export default {
   setup() {
+    const hommeShow = ref('');
     const sidebarOpen = ref(false);
-    const hommeShow = ref('homme');
     const activeDiv = ref(0);
     const router = useRouter();
 
-    const handleDivClick = (index, homme) => {
+    const handleDivClick = (index: number, homme: string) => {
       activeDiv.value = index;
       hommeShow.value = homme;
     };
@@ -36,13 +36,13 @@ export default {
     };
 
     return {
-      sidebarOpen,
       hommeShow,
+      sidebarOpen,
       activeDiv,
       handleDivClick,
-      handleToggleSidebar
+      handleToggleSidebar,
     };
-  }
+  },
 };
 </script>
 

@@ -1,14 +1,14 @@
 <template>
   <div style="margin-top: 10px; display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap">
     <div v-for="el in reversedData" :key="el.id">
-      <ClothesDetail :el="el" />
+      <ClothesDetail :el="el" />  
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import ClothesDetail from './ClothesDetail';
+import ClothesDetail from './clothesDetail';
 
 export default {
   components: {

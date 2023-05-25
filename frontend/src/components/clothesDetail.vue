@@ -100,7 +100,10 @@ export default {
     };
   },
   setup(props) {
-    const currentUser = ref(null);
+    const currentUser = ref({
+  id: 0,
+  isAdmin: 0,
+})
      const showLogin = ref(false)
      const show = ref(false)
      const updatedProduct= ref({})
@@ -108,7 +111,7 @@ export default {
     // Fetch the current user data
     const fetchCurrentUser = async () => {
       try {
-        const response = await axios.get('http://${process.env.HOST}:${process.env.PORT}/user');
+        const response = await axios.get('http://localhost:5000/api/a');
         currentUser.value = response.data;
       } catch (error) {
         console.error(error);

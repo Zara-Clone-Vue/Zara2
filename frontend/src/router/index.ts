@@ -10,6 +10,8 @@ import login from '../components/login.vue'
 import search from '../components/search.vue'
 import HelpPage from '../components/HelpPage.vue'
 import men from '../components/men.vue'
+import kids from '../components/kids.vue'
+import women from '../components/woman.vue'
 
 
 const routes = [
@@ -54,14 +56,23 @@ const routes = [
     {
     path: '/search',
     name: 'search',
-    component: search
+    component: search,
   },
   {
     path: "/men",
     name: 'men',
-    component : men
-  }
- 
+    component : men,
+  },
+  {
+    path: "/kids",
+    name: 'kids',
+    component: kids,
+  },
+  {
+    path:"/women",
+    name: 'women',
+    component:women,
+  },
 ]
 
 const router = createRouter({
