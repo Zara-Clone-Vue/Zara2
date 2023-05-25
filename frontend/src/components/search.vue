@@ -3,31 +3,19 @@
     <div class="elements">
       <div
         class="femme"
-        :class="{ active: activeDiv === 0 }"
-        @click="
-          handleDivClick(0);
-          hommeShow = 'femme';
-        "
+
       >
         FEMME
       </div>
       <div
         class="homme"
-        :class="{ active: activeDiv === 1 }"
-        @click="
-          handleDivClick(1);
-          hommeShow = 'homme';
-        "
+  
       >
         HOMME
       </div>
       <div
         class="enfants"
-        :class="{ active: activeDiv === 2 }"
-        @click="
-          handleDivClick(2);
-          hommeShow = 'enfants';
-        "
+      
       >
         ENFANTS
       </div>
@@ -45,19 +33,19 @@
 
     </div>
     <div class="search-results">
-      <div class="clothes-detail" v-for="el in data" key="el.id">
+      <div >
 <div id="app">
   <ul>
     <div class="containerimg">
-            <li v-for="item in data" :key="item.id">
-              {{ item.clothesName }}
+            <div v-for="item in data" :key="item.id">
+              
               <div >
               <img  :src="item.image" alt="" />
-              <li>{{item.price}}</li>
-              <li>{{item.rating}}</li>
-
+              <li><h3> Clothes Name : </h3>{{ item.clothesName }}</li>
+              <li> <h3>The price : </h3> {{item.price}}</li>
+              <li> <h3>Rating : </h3> {{item.rating}}</li>
               </div>
-            </li>
+            </div>
             </div>
           </ul>
 </div>
@@ -98,15 +86,10 @@ export default {
       searchText,
       handleSearch,
       hommeShow: "femme",
-      activeDiv: 0,
     };
   },
 
-  methods: {
-    handleDivClick(index: number): void {
-      this.activeDiv = index;
-    },
-  },
+  
 };
 </script>
 
