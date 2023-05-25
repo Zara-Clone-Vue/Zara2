@@ -21,7 +21,8 @@ const routes = [
     path: '/login',
     name: 'login',
     component: login
-  } ,{
+  } ,
+  {
     path: '/ContactPage',
     name: 'ContactPage',
     component: ContactPage
@@ -49,7 +50,9 @@ const routes = [
   {
     path: '/user-profile/password',
     name: 'Password',
-    component: PasswordForm},
+    component: PasswordForm,
+  },
+
     {
     path: '/search',
     name: 'search',

@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <div>
+    <div class="password" >
       <label>Current Password:</label>
       <input type="password" v-model="currentPassword" />
     </div>
@@ -11,6 +11,13 @@
     <button type="submit">Save</button>
   </form>
 </template>
+<style> 
+.password {
+  margin-top: 150px;
+
+}
+
+</style>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';

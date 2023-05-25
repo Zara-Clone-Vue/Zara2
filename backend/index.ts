@@ -39,14 +39,20 @@ export const AppDataSource = new DataSource({
 AppDataSource.initialize()
     .then(() => {
     console.log("databse connected")
+<<<<<<< HEAD
     app.use("/api",helpp)
     app.use("/app",cartrouter)
     app.use("/api",router)
     app.use("/api",routeProduct)
     
  
+=======
+    app.use("/api",router)
+    app.use("/api",routeProduct)
+    app.use("/api",helpp)
+    app.use("/api",cartrouter)
+>>>>>>> d6f6f0431e3b5f49833e4abbf71a4c8bff5b593f
     
-
   
   })
   
@@ -104,6 +110,7 @@ app.listen(5000,()=> console.log("listening on port"+5000))
 
 
 
-
+// app.listen(3001,()=>{
+//     console.log('server listen to port '+3001)})
   
  
