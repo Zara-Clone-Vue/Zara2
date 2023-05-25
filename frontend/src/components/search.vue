@@ -46,8 +46,22 @@
     </div>
     <div class="search-results">
       <div class="clothes-detail" v-for="el in data" key="el.id">
-        <ClothesDetail :el="el" />
-      </div>
+<div id="app">
+  <ul>
+    <div class="containerimg">
+            <li v-for="item in data" :key="item.id">
+              {{ item.clothesName }}
+              <div >
+              <img  :src="item.image" alt="" />
+              <li>{{item.price}}</li>
+              <li>{{item.rating}}</li>
+
+              </div>
+            </li>
+            </div>
+          </ul>
+</div>
+</div>
     </div>
   </div>
 </template>
@@ -71,9 +85,10 @@ export default {
       }
 
       axios
-        .get(`/search/${query}`)
+        .get(`http://localhost:5000/api/all`)
         .then((response) => {
-          data.value = response.data.products;
+          data.value = response.data;
+          console.log(data.value)
         })
         .catch((error) => console.log(error));
     };
@@ -97,6 +112,16 @@ export default {
 
 <style>
 /* Your styles here */
+.containerimg::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.prodimg{
+ float: left;
+  width: 33.33%;
+  padding: 5px;
+}
 .md-form {
   position: relative;
  
