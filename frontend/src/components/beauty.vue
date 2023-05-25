@@ -1,12 +1,13 @@
 <template>
   <div style="margin-top: 10px; display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap">
     <ClothesDetail v-for="(el, i) in data" :el="el" :key="i" />
+  
   </div>
 </template>
 
 <script>
 import { ref, onMounted } from 'vue';
-import ClothesDetail from './ClothesDetail';
+import ClothesDetail from './clothesDetail';
 import axios from 'axios';
 
 export default {
@@ -18,13 +19,13 @@ export default {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://${process.env.HOST}:${process.env.PORT}/all/beauty`);
-        data.value = response.data.products;
+        const response = await axios.get(`http://localhost:5000/api/beauty`);
+        data.value = response.data;
       } catch (error) {
         console.log(error);
       }
     };
-
+console.log("ta9alwa")
     onMounted(() => {
       fetchData();
     });

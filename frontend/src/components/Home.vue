@@ -21,20 +21,32 @@ import { useRouter } from 'vue-router';
 
 export default {
   setup() {
+    const hommeShow = ref('');
     const sidebarOpen = ref(false);
+
+    const activeDiv = ref(0);
     const router = useRouter();
 
-   
+    const handleDivClick = (index: number, homme: string) => {
+      activeDiv.value = index;
+      hommeShow.value = homme;
+    };
+
 
     const handleToggleSidebar = () => {
       sidebarOpen.value = !sidebarOpen.value;
     };
 
     return {
+
+      hommeShow,
       sidebarOpen,
-      handleToggleSidebar
+      activeDiv,
+      handleDivClick,
+      handleToggleSidebar,
+
     };
-  }
+  },
 };
 </script>
 

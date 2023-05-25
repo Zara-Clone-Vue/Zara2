@@ -6,21 +6,23 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import ClothesDetail from './ClothesDetail';
+import ClothesDetail from './clothesDetail.vue';
 import axios from 'axios';
 
 export default {
   components: {
     ClothesDetail
   },
+ 
+
   setup() {
     const data = ref([]);
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('/all/womens');
+        const response = await axios.get('http://localhost:5000/api/women');
         console.log(response);
-        data.value = response.data.products;
+        data.value = response.data;
       } catch (error) {
         console.log(error);
       }
