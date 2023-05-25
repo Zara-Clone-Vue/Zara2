@@ -33,7 +33,7 @@ export default {
         .get(`http://localhost:5000/api/kids`)
         .then((response) => {
           console.log(response);
-          this.data = response.data.products;
+          this.data = response.data;
         })
         .catch((error) => console.log(error));
     },
