@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <div>
+    <div class="adress">
       <label>Street:</label>
       <input type="text" v-model="street" />
     </div>
@@ -20,6 +20,11 @@
   </form>
 </template>
 
+<style>
+.adress{
+  margin-top: 150px;
+}
+</style>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import axios from 'axios';
