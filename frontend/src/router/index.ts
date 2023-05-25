@@ -9,6 +9,7 @@ import ContactPage from '../components/ContactPage.vue'
 import login from '../components/login.vue'
 import search from '../components/search.vue'
 import HelpPage from '../components/HelpPage.vue'
+import men from '../components/men.vue'
 
 
 const routes = [
@@ -55,6 +56,11 @@ const routes = [
     name: 'search',
     component: search
   },
+  {
+    path: "/men",
+    name: 'men',
+    component : men
+  }
  
 ]
 

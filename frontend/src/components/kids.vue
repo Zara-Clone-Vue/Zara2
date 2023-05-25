@@ -30,7 +30,7 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get(`/all/kids`)
+        .get(`http://localhost:5000/api/kids`)
         .then((response) => {
           console.log(response);
           this.data = response.data.products;

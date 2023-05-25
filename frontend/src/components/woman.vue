@@ -18,9 +18,9 @@ export default {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('/all/womens');
+        const response = await axios.get('http://localhost:5000/api/women');
         console.log(response);
-        data.value = response.data.products;
+        data.value = response.data;
       } catch (error) {
         console.log(error);
       }

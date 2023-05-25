@@ -3,7 +3,7 @@
     <div
       style="margin-top: 10px; display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap"
     >
-      <div v-for="el in data.reverse()" :key="el.id">
+      <div v-for="el in data" :key="el.id">
         <ClothesDetail :el="el" />
       </div>
     </div>
@@ -12,7 +12,7 @@
 
 <script>
 import axios from 'axios';
-import ClothesDetail from './ClothesDetail';
+import ClothesDetail from './clothesDetail.vue';
 
 export default {
   components: {
@@ -29,10 +29,10 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get(`/all/men`)
+        .get(`http://localhost:5000/api/men`)
         .then((response) => {
-          console.log(response);
-          this.data = response.data.products;
+          this.data = response.data;
+          console.log(response.data)
         })
         .catch((error) => console.log(error));
     },

@@ -4,7 +4,7 @@
     <div class="card-body">
       <div style="display: flex; justify-content: space-between">
         <h5 class="card-title">{{ el.clothesName }}</h5>
-        <p class="card-text">{{ el.price }}£</p>
+        <p class="card-text">{{el.price}}£</p>
       </div>
       <button v-if="currentUser.id > 0 && currentUser.isAdmin === 0" class="btn btn-primary" @click="addToCart">
         Add to Cart
@@ -69,8 +69,10 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted, PropType } from 'vue';
 import axios from 'axios';
+
+ 
 
 export default {
   props: {
@@ -80,22 +82,29 @@ export default {
     },
     setCount: Function,
     count: Number,
+   
   },
   data() {
     return {
       showLogin: false,
       show: false,
       updatedProduct: {
+        id:0,
         clothesName: '',
-        price: '',
+        price: 0,
         image: '',
         category: '',
+        rating: 0,
+        times: 0,
       },
     };
   },
   setup(props) {
     const currentUser = ref(null);
-
+     const showLogin = ref(false)
+     const show = ref(false)
+     const updatedProduct= ref({})
+     
     // Fetch the current user data
     const fetchCurrentUser = async () => {
       try {
@@ -112,7 +121,8 @@ export default {
     });
 
     // Lifecycle hook
-    onMounted(fetchCurrentUser);
+    onMounted(fetchCurrentUser)
+    
 
     const handleClose = () => (show.value = false);
     const handleShow = () => {
@@ -121,6 +131,8 @@ export default {
       updatedProduct.price = props.el.price;
       updatedProduct.image = props.el.image;
       updatedProduct.category = props.el.category;
+      updatedProduct.rating = props.el.rating;
+      updatedProduct.count = props.el.count;
     };
 
     const handleChange = (e) => {

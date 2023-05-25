@@ -18,7 +18,7 @@ export default {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://${process.env.HOST}:${process.env.PORT}/all/beauty`);
+        const response = await axios.get(`http://localhost:5000/api/beauty`);
         data.value = response.data.products;
       } catch (error) {
         console.log(error);
