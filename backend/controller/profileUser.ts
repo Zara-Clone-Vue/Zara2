@@ -4,6 +4,8 @@ import {AppDataSource} from '../index'
 import { user } from '../model/profileUser';
 
 class ProfileUserController {
+   
+  
 
   async getUsers(req: Request, res: Response) {
     try {

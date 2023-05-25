@@ -1,13 +1,14 @@
 import "reflect-metadata";
 import express, {Express} from 'express';
 import { DataSource } from 'typeorm';
-import {product} from "../backend/model/product"
+import {product} from "../backend/model/product" 
+import routeProduct from './routes/productRoutes';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
 import router from './routes/profileUser'
 // import routerUser from './routes/userRoutes'
- import routeProduct from './routes/productRoutes';
+
 import { user } from "./model/profileUser";
 
                                                               
@@ -19,7 +20,7 @@ import {  cart } from "./model/cart";
 
 // import routeCart from './routes/cartRoutes';
 const app: Express = express();
-const port = 7000;
+
 app.use(express.json());
 app.use(cors());
 app.use(express.json())

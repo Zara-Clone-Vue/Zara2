@@ -6,16 +6,16 @@ export class user {
 
   @Column()
   username!: string;
-
+ 
   @Column()
   email!: string;
 
   @Column()
-  adress!: string;
-
-  @Column()
   password!: string; 
 
+  @Column()
+  adress!: string;
+
   @Column()  
-  isAdmin!:number
+  isAdmin!:number;
 }

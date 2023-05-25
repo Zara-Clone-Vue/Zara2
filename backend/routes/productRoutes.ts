@@ -4,7 +4,7 @@ import express from 'express'
 const routeProduct=express.Router();
 
 routeProduct.get('/all',product.getAllProducts)
-routeProduct.get('/:category',product.getAdultCategory)
+routeProduct.get('/:category',product.getByCategory)
 routeProduct.patch("/product/:id",product.updateProduct)
 routeProduct.delete("/product/:id",product.removeProduct)
 routeProduct.post("/product",product.postProduct)

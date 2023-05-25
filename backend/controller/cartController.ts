@@ -53,9 +53,10 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import {cart} from '../model/cart';
+import {AppDataSource} from '../index'
 
 export const allCarts = async (_req: Request, res: Response) => {
-  const cartRepository = getRepository(cart);
+  const cartRepository = AppDataSource.getRepository(cart);
   try {
     const result = await cartRepository.find();
     res.json(result);
@@ -66,7 +67,7 @@ export const allCarts = async (_req: Request, res: Response) => {
 
 export const cartForUser = async (req: Request, res: Response) => {
   const userId = parseInt(req.params.id);
-  const cartRepository = getRepository(cart);
+  const cartRepository = AppDataSource.getRepository(cart);
   try {
     const results = await cartRepository.find({ where: { user_id: userId } });
     res.json(results);
@@ -77,7 +78,7 @@ export const cartForUser = async (req: Request, res: Response) => {
 
 export const toCart = async (req: Request, res: Response) => {
   const { user_id, product_id } = req.body;
-  const cartRepository = getRepository(cart);
+  const cartRepository = AppDataSource.getRepository(cart);
   try {
     const newCart = new cart();
     newCart.user_id = user_id;
@@ -91,7 +92,7 @@ export const toCart = async (req: Request, res: Response) => {
 
 export const remove = async (req: Request, res: Response) => {
   const cartId = parseInt(req.params.id);
-  const cartRepository = getRepository(cart);
+  const cartRepository = AppDataSource.getRepository(cart);
   try {
     await cartRepository.delete(cartId);
     res.json('Deleted');
@@ -102,7 +103,7 @@ export const remove = async (req: Request, res: Response) => {
 
 export const removeCartOfUser = async (req: Request, res: Response) => {
   const userId = parseInt(req.params.id);
-  const cartRepository = getRepository(cart);
+  const cartRepository = AppDataSource.getRepository(cart);
   try {
     await cartRepository.delete({ user_id: userId });
     res.json('Deleted');
