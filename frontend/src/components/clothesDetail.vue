@@ -1,7 +1,7 @@
 <template>
   <div class="card" style="width: 20rem; background: white; margin: 20px 10px; position: static">
    <router-link>
-    <img :src="el.image" alt="Clothes Image" style="width: 318px; height: 400px" @click= />
+    <img :src="el.image" alt="Clothes Image" style="width: 318px; height: 400px"/>
     </router-link>
     <div class="card-body">
       <div style="display: flex; justify-content: space-between">
