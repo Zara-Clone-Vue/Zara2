@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      style="margin-top: 10px; display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap"
+      style="margin-top: 150px; display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap"
     >
       <div v-for="el in data" :key="el.id">
         <ClothesDetail :el="el" />
