@@ -9,17 +9,23 @@ import ContactPage from '../components/ContactPage.vue'
 import login from '../components/login.vue'
 import signup from '../components/signup.vue'
 import search from '../components/search.vue'
-import HelpPage from '../components/HelpPage.vue'
 import men from '../components/men.vue'
 import kids from '../components/kids.vue'
 import women from '../components/woman.vue'
 import beauty from '../components/beauty.vue'
 import one from '../components/oneone.vue'
+import HelpPage from '../components/HelpPage.vue'
+import HelpDeatils from '../components//HelpDetails.vue'
 const routes = [
   {
     path: '/help',
     name: 'Help',
     component: HelpPage
+  },
+  {
+    path: '/HelpDeatils',
+    name: 'HelpDeatils',
+    component: HelpDeatils
   },
   {
     path: '/login',

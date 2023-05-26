@@ -41,8 +41,8 @@ AppDataSource.initialize()
     .then(() => {
     console.log("databse connected")
     app.use("/api",router)
-    app.use("/api",routeProduct)
     app.use("/api",helpp)
+    app.use("/api",routeProduct)
     app.use("/api",cartrouter)
     
   
