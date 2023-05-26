@@ -7,6 +7,7 @@ import PasswordForm from '../components/PasswordForm.vue';
 import HomeView from '../components/Home.vue'
 import ContactPage from '../components/ContactPage.vue'
 import login from '../components/login.vue'
+import signup from '../components/signup.vue'
 import search from '../components/search.vue'
 import HelpPage from '../components/HelpPage.vue'
 
@@ -21,6 +22,10 @@ const routes = [
     path: '/login',
     name: 'login',
     component: login
+  } , {
+    path: '/signup',
+    name: 'signup',
+    component: signup
   } ,
   {
     path: '/ContactPage',

@@ -1,15 +1,17 @@
 <template>
   <div class="container">
     <h2 class="heading">Sign In</h2>
-    <div class="form-group">
-      <label for="username" class="label">Username:</label>
-      <input type="email" id="email" v-model="username" class="input" required />
-    </div>
-    <div class="form-group">
-      <label for="password" class="label">Password:</label>
-      <input type="password" id="password" v-model="password" class="input" required />
-    </div>
-    <button @click="login" class="button">Submit</button>
+    <form class="form-group" @submit.prevent="login">
+      <div class="form-group">
+        <label for="username" class="label">Username:</label>
+        <input type="email" id="email" v-model="username" class="input" required />
+      </div>
+      <div class="form-group">
+        <label for="password" class="label">Password:</label>
+        <input type="password" id="password" v-model="password" class="input" required />
+      </div>
+      <button type="submit" class="button">Submit</button>
+    </form>
   </div>
 </template>
 
@@ -24,16 +26,15 @@ export default {
 
     const login = async () => {
       try {
-        const res = await axios.post('/users/login', {
+        const res = await axios.post('http://localhost:5000/api/users/login', {
           username: username.value,
           password: password.value
         });
-        // Handle response data as needed
         console.log(res.data);
-        // Use the router.push() method to navigate to a different route
+       
       } catch (error) {
         console.error(error);
-        // Handle error as needed
+      
       }
     };
 
