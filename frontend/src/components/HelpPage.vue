@@ -11,7 +11,11 @@
               
               <div >
               <img  :src="item.image" alt="" />
+            
+
+            <router-link to="/HelpDeatils" class="ss">
               <h3> Answer : </h3>{{ item.namehelp }}
+              </router-link>
              
               </div>
             </div>
@@ -23,6 +27,9 @@
 <script lang=ts>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import HelpDeatils from './HelpDetails.vue';
+
+
 
 export default {
   setup() {
