@@ -1,5 +1,6 @@
 <template>
   <div class="container1">
+  <RouterLink :to="kids">
     <div><div>COLONIES DE VACANCESNEW</div></div>
     <div><div>TRUE NEUTRALSNEW</div></div>
     <div><div>FILLE | 6-14 ANS</div></div>
@@ -7,12 +8,18 @@
     <div><div>BÉBÉ FILLE | 9 MOIS - 6 ANS</div></div>
     <div><div>BÉBÉ GARÇON | 9 MOIS - 6 ANS</div></div>
     <div><div>ACCESSOIRES | CHAUSSURES</div></div>
+    </RouterLink>
   </div>
 </template>
 
 <script lang="ts">
 export default {
   name: 'EnfantCategory',
+  data () {
+    return{
+    kids:"/kids"
+  }
+  }
 };
 </script>
 <style scoped>

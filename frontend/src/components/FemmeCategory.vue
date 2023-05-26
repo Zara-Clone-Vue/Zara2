@@ -1,5 +1,6 @@
 <template>
   <div class="container1">
+  <RouterLink :to="women">
     <div class="chemis">
       <div>CHEMISES | BLOUSES</div>
     </div>
@@ -51,12 +52,18 @@
     <div class="special">
       <div>SPECIAL PRICES</div>
     </div>
+    </RouterLink>
   </div>
 </template>
 
 <script lang="ts">
 export default {
   name: 'FemmeCategory',
+  data(){
+    return{
+      women:"/women"
+    }
+  }
 };
 </script>
 
