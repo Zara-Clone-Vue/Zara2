@@ -31,7 +31,7 @@ export const AppDataSource = new DataSource({
   host: "localhost",
   port: 3306,
   username: "root",
-  password: "root",
+  password: "Sarhane1991.",
   database: "zara",
   entities: [product,helpuser,cart,user],
   synchronize: true,
@@ -41,8 +41,8 @@ AppDataSource.initialize()
     .then(() => {
     console.log("databse connected")
     app.use("/api",router)
-    app.use("/api",routeProduct)
     app.use("/api",helpp)
+    app.use("/api",routeProduct)
     app.use("/api",cartrouter)
     
   

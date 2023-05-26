@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 10px; display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap">
+  <div style="margin-top: 150px; display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap">
     <ClothesDetail v-for="(el, i) in data" :el="el" :key="i" />
   </div>
 </template>
