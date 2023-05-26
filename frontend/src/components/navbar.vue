@@ -29,12 +29,17 @@
               </router-link>
             </div>
 
-            <router-link to="/login" class="ss">SE CONNECTER</router-link>
+            <template v-if="username">
+    <router-link to="/user-profile" class="ss">{{ username }}</router-link>
+  </template>
+  <template v-else>
+    <router-link to="/login" class="ss">SE CONNECTER</router-link>
+  </template>
 
             <router-link to="/help" class="ss">
               AIDE
               </router-link>
-
+                                                              
             <div class ='cart'>
            
               <svg
@@ -140,13 +145,21 @@ import search from "./search.vue";
 import help from "./HelpPage.vue"
 
 export default defineComponent({
+  computed: {
+    username() {
+      return localStorage.getItem('username');
+    }
+  },
   data() {
     return {
       sidebarOpen: false,
       hommeShow: 'femme',
-      activeDiv: 0
-    };
-  },
+      activeDiv: 0, 
+    
+    }; 
+  }, 
+  
+  
   methods: {
     handleDivClick(index: number): void {
       this.activeDiv = index;

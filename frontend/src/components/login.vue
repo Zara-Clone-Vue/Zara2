@@ -4,13 +4,13 @@
     <form class="form-group" @submit.prevent="login">
       <div class="form-group">
         <label for="username" class="label">Username:</label>
-        <input type="email" id="email" v-model="username" class="input" required />
+        <input  id="email" v-model="username" class="input" required />
       </div>
       <div class="form-group">
         <label for="password" class="label">Password:</label>
         <input type="password" id="password" v-model="password" class="input" required />
       </div>
-      <button type="submit" class="button">Submit</button>
+      <button type="submit" class="button"  @click="handleSubmit">Submit</button>
     </form>
   </div>
 </template>
@@ -18,21 +18,28 @@
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router'; 
 
 export default {
   setup() {
     const username = ref('');
     const password = ref('');
-
-    const login = async () => {
+    const router = useRouter(); 
+    const handleSubmit = async () => { 
+      
       try {
+        console.log( password["_value"], username["_value"]);
         const res = await axios.post('http://localhost:5000/api/users/login', {
-          username: username.value,
-          password: password.value
+          username: username["_value"],
+
+          password: password["_value"]
+
         });
-        console.log(res.data);
-       
-      } catch (error) {
+        window.localStorage.setItem('username',username["_value"] );
+        console.log(username);
+        window.location.href="/"
+        // router.push('/');
+        } catch (error) {
         console.error(error);
       
       }
@@ -41,7 +48,7 @@ export default {
     return {
       username,
       password,
-      login
+      handleSubmit
     };
   }
 };
