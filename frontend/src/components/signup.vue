@@ -26,63 +26,38 @@
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
-import styles from '../styles/sign.module.css';
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'; 
 
 export default {
   setup() {
-    const router = useRouter();
-
     const username = ref('');
-    const email = ref('');
     const password = ref('');
-    const confPassword = ref('');
 
-    const handleNameChange = (e) => {
-      username.value = e.target.value;
-    };
+    const router = useRouter(); 
 
-    const handleEmailChange = (e) => {
-      email.value = e.target.value;
-    };
-
-    const handlePasswordChange = (e) => {
-      password.value = e.target.value;
-    };
-
-    const handleConfPasswordChange = (e) => {
-      confPassword.value = e.target.value;
-    };
-
-    const handleSubmit = async () => {
-      if (password.value === confPassword.value) {
-        await axios.post('/users/signup', {
+    const handleSubmit = async () => { 
+      try {
+        const res = await axios.post('http://localhost:5000/api/users/signup', {
           username: username.value,
-          email: email.value,
-          password: password.value,
-          isAdmin: false,
+          password: password.value
         });
-        router.push('/login');
-      } else {
-        alert('You should confirm your password');
+        console.log(res.data);
+        router.push('/login'); 
+     
+      } catch (error) {
+        console.error(error);
       }
     };
 
     return {
       username,
-      email,
       password,
-      confPassword,
-      handleNameChange,
-      handleEmailChange,
-      handlePasswordChange,
-      handleConfPasswordChange,
-      handleSubmit,
-      styles,
+      handleSubmit 
     };
-  },
+  }
 };
 </script>
+
 
 <style scoped>
 .container {
@@ -117,3 +92,4 @@ export default {
   /* Your styles here */
 }
 </style>
+
