@@ -126,29 +126,29 @@ class ProfileUserController {
     async login(req: Request, res: Response) {
       try {
         const { username, password } = req.body;
-  
+    
         const userRepository = AppDataSource.getRepository(user);
         const User = await userRepository.findOne({ where: { username } });
-  
+    
         if (!User) {
           return res.status(401).json({ message: 'Invalid username or password' });
         }
-  
+    
         const comparePassword = await bcrypt.compare(password, User.password);
-  
+    
         if (!comparePassword) {
           return res.status(401).json({ message: 'Invalid username or password' });
         }
-  
-        const token = jwt.sign({ id: User.id, username: User.username }, "process.env.ACCESS_TOKEN");
-  
+    
+        const token = jwt.sign({ id: User.id, username: User.username }, "process.env.ACCESS_TOKEN_SECRET", {
+          expiresIn: '1h', 
+        });
+    
         return res.status(200).json({ token, id: User.id, isAdmin: User.isAdmin });
       } catch (error) {
         console.error('Error during login:', error);
         return res.status(500).json({ message: 'Internal server error' });
-      }
-    }
   }
-  
+}}
   export default ProfileUserController;
   
