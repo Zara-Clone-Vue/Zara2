@@ -10,8 +10,11 @@ import login from '../components/login.vue'
 import signup from '../components/signup.vue'
 import search from '../components/search.vue'
 import HelpPage from '../components/HelpPage.vue'
-
-
+import men from '../components/men.vue'
+import kids from '../components/kids.vue'
+import women from '../components/woman.vue'
+import beauty from '../components/beauty.vue'
+import twotwo from '../components/oneone.vue'
 const routes = [
   {
     path: '/help',
@@ -61,9 +64,34 @@ const routes = [
     {
     path: '/search',
     name: 'search',
-    component: search
+    component: search,
   },
- 
+  {
+    path: "/men",
+    name: 'men',
+    component : men,
+  },
+  {
+    path: "/kids",
+    name: 'kids',
+    component: kids,
+  },
+  {
+    path:"/women",
+    name: 'women',
+    component:women,
+  },
+  {
+    path:"/beauty",
+    name: 'beauty',
+    component:beauty,
+  },
+  {
+     path:'/one-time',
+     name: 'one-time',
+     component:twotwo
+
+  }
 ]
 
 const router = createRouter({
