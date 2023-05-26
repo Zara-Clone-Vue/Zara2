@@ -37,13 +37,15 @@
 <div id="app">
   <ul>
     <div class="containerimg">
-            <div v-for="item in data" :key="item.id">
-              
-              <div >
-              <img  :src="item.image" alt="" />
-              <li><h3> Clothes Name : </h3>{{ item.clothesName }}</li>
-              <li> <h3>The price : </h3> {{item.price}}</li>
-              <li> <h3>Rating : </h3> {{item.rating}}</li>
+            <div v-for="item in data" :key="item.id"   style="width: 10rem;flex-direction: row" class="prodimg">
+              <h1></h1>
+                            <h1></h1>
+
+              <div class="item-container">
+              <img  :src="item.image"  alt="" />
+              <li>Clothes Name : {{ item.clothesName }}</li>
+              <li> The price  {{item.price}}</li>
+              <li> Rating : {{item.rating}}</li>
               </div>
             </div>
             </div>
@@ -94,7 +96,30 @@ export default {
 </script>
 
 <style>
-/* Your styles here */
+.containerimg {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 150px
+
+}
+
+.prodimg {
+  width: 33.33%;
+  padding: 5px;
+}
+
+.item-container {
+  width: 100%;
+  background: white;
+  margin: 20px 10px;
+}
+
+.item-container img {
+  width: 100%;
+  background: white;
+  margin-top: 20px;
+}
+
 .containerimg::after {
   content: "";
   clear: both;
