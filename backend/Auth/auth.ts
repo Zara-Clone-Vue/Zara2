@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-
+import { user } from '../model/profileUser';
 
 const authenticate = async (req: Request, res: Response, next: NextFunction) => {
   console.log(req.headers);

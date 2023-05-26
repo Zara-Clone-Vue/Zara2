@@ -39,12 +39,10 @@ export const AppDataSource = new DataSource({
 AppDataSource.initialize()
     .then(() => {
     console.log("databse connected")
-    app.use("/api",helpp)
-    app.use("/app",cartrouter)
     app.use("/api",router)
     app.use("/api",routeProduct)
-    
- 
+    app.use("/api",helpp)
+    app.use("/api",cartrouter)
     
   
   })

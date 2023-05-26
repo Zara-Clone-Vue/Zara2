@@ -47,11 +47,11 @@ export default defineComponent({
 
     const handleSubmit = () => {
       if (props.isPassword) {
-        // Perform password update logic
+       
         emit('update-password', newPassword.value);
         newPassword.value = '';
       } else if (props.isAddress) {
-        // Perform address update logic
+       
         const address = {
           street: street.value,
           city: city.value,
@@ -64,7 +64,7 @@ export default defineComponent({
         state.value = '';
         postalCode.value = '';
       } else {
-        // Perform email update logic
+        
         emit('update-email', newEmail.value);
         newEmail.value = '';
       }
