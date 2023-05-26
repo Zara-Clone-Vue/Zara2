@@ -1,13 +1,14 @@
 <template>
   <div class="card" style="width: 20rem; background: white; margin: 20px 10px; position: static">
-   <router-link>
-    <img :src="el.image" alt="Clothes Image" style="width: 318px; height: 400px"/>
-    </router-link>
+   <RouterLink :to="{path:'/one', query:{element:el.clothesName}}">
+    <img :src="el.image" alt="Clothes Image" style="width: 318px; height: 400px"  />
+    </RouterLink>
     <div class="card-body">
       <div style="display: flex; justify-content: space-between">
         <h5 class="card-title">{{ el.clothesName }}</h5>
         <p class="card-text">{{el.price}}£</p>
       </div>
+      
       <button v-if="currentUser.id > 0 && currentUser.isAdmin === 0" class="btn btn-primary" @click="addToCart">
         Add to Cart
       </button>
@@ -99,6 +100,7 @@ export default {
         rating: 0,
         times: 0,
       },
+   one:"/one"
     };
   },
   setup(props) {

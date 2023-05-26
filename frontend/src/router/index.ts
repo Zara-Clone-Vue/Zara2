@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import UserProfile from '../components/UserProfile.vue';
 import AddressForm from '../components/AddressForm.vue';
@@ -14,7 +14,7 @@ import men from '../components/men.vue'
 import kids from '../components/kids.vue'
 import women from '../components/woman.vue'
 import beauty from '../components/beauty.vue'
-import twotwo from '../components/oneone.vue'
+import one from '../components/oneone.vue'
 const routes = [
   {
     path: '/help',
@@ -60,7 +60,6 @@ const routes = [
     name: 'Password',
     component: PasswordForm,
   },
-
     {
     path: '/search',
     name: 'search',
@@ -87,10 +86,9 @@ const routes = [
     component:beauty,
   },
   {
-     path:'/one-time',
-     name: 'one-time',
-     component:twotwo
-
+     path:'/one',
+     name: 'one',
+     component:one
   }
 ]
 

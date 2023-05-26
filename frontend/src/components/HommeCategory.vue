@@ -1,30 +1,35 @@
+<template>
+  <div class="container1">
+   <RouterLink :to="men">
+    <div >EDITION</div>
+    <div class="nouveautes">NOUVEAUTÉS</div>
+    <div class="lin">LIN</div>
+    <div class="crochet">CROCHET</div>
+    <div class="basiqeus">BASIQUES</div>
+    <div class="costumes">COSTUMES</div>
+    <div class="chemises">CHEMISES</div>
+    <div class="t-shirts">T-SHIRTS</div>
+    <div class="blousons">BLOUSONS | SURCHEMISES</div>
+    <div class="pantalons">PANTALONS</div>
+    <div class="jeans">JEANS</div>
+    <div class="shorts">SHORTS</div>
+    <div class="sweats">SWEATS | HOODIES</div>
+    <div class="pulls">PULLS | GILETS</div>
+    <div class="total-look">TOTAL LOOK</div>
+    <div class="polos">POLOS</div>
+    </RouterLink>
+  </div>
+</template>
 <script lang="ts">
     export default {
       name: 'HommeCategory',
+       data() {
+    return {
+      men: '/men',
+    };
+       }
       };
     </script>
-<template>
-  <div class="container1">
-    <div><div to="/men">EDITION</div></div>
-    <div class="nouveautes"><div to="/men">NOUVEAUTÉS</div></div>
-    <div class="lin"><div to="/men">LIN</div></div>
-    <div class="crochet"><div to="/men">CROCHET</div></div>
-    <div class="basiqeus"><div to="/men">BASIQUES</div></div>
-    <div class="costumes"><div to="/men">COSTUMES</div></div>
-    <div class="chemises"><div to="/men">CHEMISES</div></div>
-    <div class="t-shirts"><div to="/men">T-SHIRTS</div></div>
-    <div class="blousons"><div to="/men">BLOUSONS | SURCHEMISES</div></div>
-    <div class="pantalons"><div to="/men">PANTALONS</div></div>
-    <div class="jeans"><div to="/men">JEANS</div></div>
-    <div class="shorts"><div to="/men">SHORTS</div></div>
-    <div class="sweats"><div to="/men">SWEATS | HOODIES</div></div>
-    <div class="pulls"><div to="/men">PULLS | GILETS</div></div>
-    <div class="total-look"><div to="/men">TOTAL LOOK</div></div>
-    <div class="polos"><div to="/men">POLOS</div></div>
-  </div>
-</template>
-
-
 <style scoped>
 .container1 {
   display: flex;
