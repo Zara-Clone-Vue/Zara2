@@ -16,8 +16,13 @@ import beauty from '../components/beauty.vue'
 import one from '../components/oneone.vue'
 import HelpPage from '../components/HelpPage.vue'
 import HelpDeatils from '../components//HelpDetails.vue'
+import cart from '../components/cart.vue'
 const routes = [
   {
+    path: '/cart',
+    name: 'cart',
+    component: cart
+  },{
     path: '/help',
     name: 'Help',
     component: HelpPage

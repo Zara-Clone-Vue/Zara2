@@ -59,7 +59,7 @@ To assess compliance, we have developed a programme of audits and continuous imp
             <p>FIND YOUR SIZE</p>
             <p>SIZE GUIDE</p>
           </div>
-          <button @click="addToCart">add to cart</button>
+          <button @click="addToCart()">add to cart</button>
   
          
           <p>DELIVERY, EXCHANGES AND RETURNS</p>
@@ -102,9 +102,11 @@ export default defineComponent({
  
   data() {
     return {
+
        selectedRating: 0,
+
       product: {
-        id: 0,
+  id: 0,
   clothesName:"" ,
   image:"",
   price:0 ,
@@ -118,9 +120,14 @@ export default defineComponent({
     redirectToAllProducts() {
       this.$router.push('/');
     },
-    addToCart() {
-      window.location.href = `/cart/${this.product.id}`;
+    async addToCart() {
+      await axios.post(`http://localhost:5000/api/cart/`, {
+    "user_id":1 ,
+    
+    "product_id":1 
+  });
     },
+
     addToBag() {
       window.location.href = `/cart/${this.product.id}`;
     },
@@ -147,6 +154,7 @@ export default defineComponent({
       console.log(suc.data.times)})
       .catch((e)=>console.log(e))
     }
+
   },
   mounted() {
     
@@ -159,8 +167,8 @@ export default defineComponent({
       .then(response => {
         console.log(response.data)
        
-        const productData = response.data;
-       const obj: Product = {
+  const productData = response.data;
+  const obj: Product = {
   id: productData.id,
   clothesName:productData.clothesName ,
   image:productData.image,
@@ -178,6 +186,11 @@ export default defineComponent({
       });
   }
 });
+
+    
+
+
+
 </script>
 
   
