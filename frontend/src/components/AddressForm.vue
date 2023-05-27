@@ -24,6 +24,32 @@
 .adress{
   margin-top: 150px;
 }
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: #000;
+  cursor: pointer;
+}
 </style>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';

@@ -40,6 +40,7 @@ export default defineComponent({
           console.error(error);
         
         });
+        window.localStorage.setItem('password',newPassword.value);
 
       currentPassword.value = '';
       newPassword.value = '';

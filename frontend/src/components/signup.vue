@@ -4,24 +4,25 @@
     <div class="signup-form">
       <div>
         <label for="name" class="label">Username</label>
-        <input type="text" id="name" v-model="username" class="input-text" required />
+        <input type="text" id="name" v-model="username" class="input" @change="handleChange('username')" required />
       </div>
       <div>
         <label for="email" class="label">Email</label>
-        <input type="email" id="email" v-model="email" class="input-email" required />
+        <input type="email" id="email" v-model="email" class="input" @change="handleChange('email')" required />
       </div>
       <div>
         <label for="password" class="label">Password</label>
-        <input type="password" id="password" v-model="password" class="input-password" required />
+        <input type="password" id="password" v-model="password" class="input" @change="handleChange('password')" required />
       </div>
       <div>
         <label for="confPassword" class="label">Confirm Password</label>
-        <input type="password" id="confPassword" v-model="confPassword" class="input-password" required />
+        <input type="password" id="confPassword" v-model="confPassword" class="input" @change="handleChange('confPassword')" required />
       </div>
-      <button class="signup-button" @click="handleSubmit">Sign-up</button>
+      <button class="button" @click="handleSubmit">Sign-up</button>
     </div>
   </div>
 </template>
+
 
 <script>
 import { ref } from 'vue';
@@ -32,27 +33,37 @@ export default {
   setup() {
     const username = ref('');
     const password = ref('');
-
+    const email = ref('');
+console.log(username, password,email)
     const router = useRouter(); 
 
     const handleSubmit = async () => { 
       try {
-        const res = await axios.post('http://localhost:5000/api/users/signup', {
+         await axios.post('http://localhost:5000/api/users/signup', {
           username: username.value,
-          password: password.value
+          email: email.value,
+          password: password.value,
+          adress: "Insert your address",
+          isAdmin : 0 
         });
-        console.log(res.data);
+        
         router.push('/login'); 
      
       } catch (error) {
         console.error(error);
-      }
+      } 
     };
+    const handleChange = (field) => {
+      console.log(`Field "${field}" changed: ${eval(field)}`);
+    };
+
 
     return {
       username,
+      email,
       password,
-      handleSubmit 
+      handleSubmit ,
+      handleChange
     };
   }
 };
@@ -61,35 +72,46 @@ export default {
 
 <style scoped>
 .container {
-  /* Your styles here */
+  max-width: 400px;
+  margin: 100px;
+  margin-left: 500px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #f9f9f9;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 }
 
-.h1 {
-  /* Your styles here */
-}
 
 .signup-form {
-  /* Your styles here */
+  margin-bottom: 20px;
 }
-
 .label {
-  /* Your styles here */
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
 }
 
-.input-text {
-  /* Your styles here */
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
-.input-email {
-  /* Your styles here */
-}
-
-.input-password {
-  /* Your styles here */
-}
-
-.signup-button {
-  /* Your styles here */
+.button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: #000;
+  cursor: pointer;
 }
 </style>
 
