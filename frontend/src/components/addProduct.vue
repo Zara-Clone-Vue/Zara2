@@ -49,7 +49,7 @@ export default {
 
     const add = async () => {
       try {
-        await axios.post(`http://${process.env.HOST}:${process.env.PORT}/product`, product.value);
+        await axios.post(`http://localhost:5000/cart`, product.value);
         router.push('/clothes');
       } catch (error) {
         console.error(error);
