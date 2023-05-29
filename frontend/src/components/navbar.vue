@@ -35,7 +35,7 @@
     <router-link to="/user-profile" class="ss">{{ username }}</router-link>
   </template>
   <template v-else>
-    <router-link to="/login" class="ss">SE CONNECTER</router-link>
+    <router-link to="/signup" class="ss">SE CONNECTER</router-link>
   </template>
 
             <router-link to="/help" class="ss">
