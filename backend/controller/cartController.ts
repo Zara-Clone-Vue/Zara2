@@ -69,7 +69,7 @@ export const cartForUser = async (req: Request, res: Response) => {
   const userId = parseInt(req.params.id);
   const cartRepository = AppDataSource.getRepository(cart);
   try {
-    const results = await cartRepository.find({ where: { user_id: userId } });
+    const results = await cartRepository.find({ where: { product_id: userId } });
     res.json(results);
   } catch (err) {
     res.json(err);
