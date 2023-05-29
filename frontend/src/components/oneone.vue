@@ -85,7 +85,6 @@ To assess compliance, we have developed a programme of audits and continuous imp
   <script lang="ts">
 import { defineComponent } from 'vue';
 import axios from 'axios';
-
 interface Product {
   id: number;
   clothesName: string;
@@ -95,7 +94,7 @@ interface Product {
   rating: number;
   times: number;
 }
-
+ let idP=0
 
 export default defineComponent({
   name: 'OneP',
@@ -124,7 +123,7 @@ export default defineComponent({
       await axios.post(`http://localhost:5000/api/cart/`, {
     "user_id":1 ,
     
-    "product_id":1 
+    "product_id":2
   });
     },
 
@@ -161,7 +160,7 @@ export default defineComponent({
     
     const currentUrl = window.location.href;
     const name = currentUrl.substring(currentUrl.lastIndexOf('/')).split("=")[1].split("+").join(" ")
-    console.log(name)
+    console.log(name +' '+'hello' )
     axios
       .get(`http://localhost:5000/api/product/${name}`)
       .then(response => {
@@ -178,7 +177,7 @@ export default defineComponent({
   times:productData.times 
 };
 
-        console.log(obj)
+        idP=productData.id
         this.product = obj;
       })
       .catch(error => {

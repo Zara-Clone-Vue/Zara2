@@ -1,7 +1,7 @@
 <template>
   <div class="pr">
     
-    <div  class="clothescard" v-for="el in productsUser" :key="el.id">
+    <div  class="clothescard" v-for="el in cart" :key="el.id">
       <div class="card" style="width: 20rem; background: white; margin: 20px 10px; position: static">
         <img class="card-img-top" src="https://static.zara.net/photos///2023/V/0/1/p/2548/041/500/2/w/296/2548041500_1_1_1.jpg?ts=1678811417914" alt="Product Image" style="width: 100%; height: 400px" />
         <div class="card-body">
