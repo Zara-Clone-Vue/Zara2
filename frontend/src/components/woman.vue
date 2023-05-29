@@ -17,7 +17,7 @@ export default {
 
   setup() {
     const data = ref([]);
-
+//fetching the data by category and setting the result in the data
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/women');
@@ -27,7 +27,7 @@ export default {
         console.log(error);
       }
     };
-
+//fetching the data when the component is mounted
     onMounted(() => {
       fetchData();
     });
