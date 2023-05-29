@@ -5,7 +5,7 @@
         <div class="flex justify-between items-center p-5">
           <div class="grid gap-1 grid-cols-2">
             <div>
-              <router-link to="/">
+            
                 <svg
                   viewBox="0 0 100 80"
                   width="25"
@@ -16,11 +16,13 @@
                   <rect y="30" width="70" height="5"></rect>
                   <rect y="60" width="70" height="5"></rect>
                 </svg>
-              </router-link>
+              
             </div>
-            <a to="/">
+            <router-link to="/">
+            <a>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/2560px-Zara_Logo.svg.png" />
             </a>
+            </router-link>
           </div>
           <div class="left-logos">
             <div class="recherche">
@@ -29,12 +31,17 @@
               </router-link>
             </div>
 
-            <router-link to="/login" class="ss">SE CONNECTER</router-link>
+            <template v-if="username">
+    <router-link to="/user-profile" class="ss">{{ username }}</router-link>
+  </template>
+  <template v-else>
+    <router-link to="/signup" class="ss">SE CONNECTER</router-link>
+  </template>
 
             <router-link to="/help" class="ss">
               HELP
               </router-link>
-
+                                                              
             <div class ='cart'>
            <router-link to="/cart" class="ss">
 
@@ -106,13 +113,16 @@
             >
               ENFANTS
             </div>
+            <router-link to="/beauty" >
             <div
-              class="beaty"
+              class="beauty"
               :class="{ active: activeDiv === 3 }"
               @click="handleDivClick(3); hommeShow = 'beauty'"
             >
               <div>BEAUTY</div>
+              
             </div>
+            </router-link>
           </div>
         </div>
         <div class="container1">
@@ -142,13 +152,21 @@ import search from "./search.vue";
 import help from "./HelpPage.vue"
 
 export default defineComponent({
+  computed: {
+    username() {
+      return localStorage.getItem('username');
+    }
+  },
   data() {
     return {
       sidebarOpen: false,
       hommeShow: 'femme',
-      activeDiv: 0
-    };
-  },
+      activeDiv: 0, 
+    
+    }; 
+  }, 
+  
+  
   methods: {
     handleDivClick(index: number): void {
       this.activeDiv = index;
@@ -236,7 +254,7 @@ svg {
   vertical-align: middle;
 }
 
-/* Additional styles for the specific logo image */
+
 img[src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/2560px-Zara_Logo.svg.png"] {
   max-width: 100%;
   height: auto;
@@ -252,10 +270,10 @@ img[src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg
 
 
 img {
-  width: 200px;
-  height: 90px;
+  width: 211.2px;
+  height: 88px;
   position: relative;
-  right: 20%;
+  right: 41%;
 }
 
 .left-logos {

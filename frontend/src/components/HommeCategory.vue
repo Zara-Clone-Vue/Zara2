@@ -37,18 +37,20 @@
   gap:12px;
   margin-top: 110px;
   margin-left: 25px;
-
+  color : black;
 }
 
 .container1 > div {
   font-size: 12px;
   white-space: nowrap;
+  color : black;
 }
 
 .container1 > div:hover,
 .container1 > div.active {
   font-weight: bold;
   cursor: pointer;
+  color : black;
 }
 </style>
 

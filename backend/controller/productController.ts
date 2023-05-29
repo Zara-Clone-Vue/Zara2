@@ -26,14 +26,14 @@ const updateProduct = async (req: Request, res: Response) => {
     const cloudimage = await Cloudinary.uploader.upload(`${req.body.image}`);
   
   const productRepository = AppDataSource.getRepository(product);
-  let productToUpdate = await productRepository.findOneBy({id:Number(req.params.id)})
+  let productToUpdate = await productRepository.findOneBy({clothesName:String(req.params.name)})
 if(productToUpdate){
   productToUpdate.clothesName=req.body.clothesName
   productToUpdate.category=req.body.category
   productToUpdate.price=req.body.price
   productToUpdate.rating=req.body.rating
   productToUpdate.times=req.body.times
-  productToUpdate.image=cloudimage.secure_url
+  productToUpdate.image=req.body.image
   const updated=await productRepository.save(productToUpdate)
 res.status(201).send(updated)}
 }
@@ -45,7 +45,7 @@ catch (err) {
 
 const removeProduct = async (req: Request, res: Response) => {
   const productRepository = AppDataSource.getRepository(product)
-  const productToRemove = await productRepository.findOneBy({id:Number(req.params.id)})
+  const productToRemove = await productRepository.findOneBy({clothesName:String(req.params.name)})
   if(productToRemove)
   await productRepository.remove(productToRemove)
   res.status(204).send("successfully removed")

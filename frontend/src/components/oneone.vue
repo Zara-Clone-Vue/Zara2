@@ -3,7 +3,7 @@
       <div id="header"></div>
       <div id="container">
         <div class="left_side_content">
-          <h4>ZARA MESSY WEEK</h4>
+          <h4>COMPOSITION & CARE</h4>
           <h3>PRODUCT MANAGER</h3>
           <p>
            We work with monitoring programmes to ensure compliance with our social, environmental and health and safety standards for our garments.
@@ -24,7 +24,7 @@ To assess compliance, we have developed a programme of audits and continuous imp
         <div class="product_info_rightSide">
           <div class="product_name">
             <h2>{{ product.clothesName }}</h2>
-            <img :src="product.image" alt="" />
+            <img :src="product.imag" alt="" />
           </div>
           
           <p>${{ product.price }}</p>
@@ -35,7 +35,26 @@ To assess compliance, we have developed a programme of audits and continuous imp
           <hr />
           
           </div>
-  
+   <div class="resultsblock-grid--adverts">
+    <div class="resultsblock-grid--adv">
+     <div class="star-rating">
+  <input type="radio" id="5-stars" name="rating1" value=5 v-model="selectedRating" @change="update" />
+  <label for="5-stars" class="star">&#9733;</label>
+  <input type="radio" id="4-stars" name="rating1" value=4 v-model="selectedRating" @change="update" />
+  <label for="4-stars" class="star">&#9733;</label>
+  <input type="radio" id="3-stars" name="rating1" value=3 v-model="selectedRating" @change="update" />
+  <label for="3-stars" class="star">&#9733;</label>
+  <input type="radio" id="2-stars" name="rating1" value=2 v-model="selectedRating" @change="update" />
+  <label for="2-stars" class="star">&#9733;</label>
+  <input type="radio" id="1-star" name="rating1" value=1 v-model="selectedRating" @change="update" />
+  <label for="1-star" class="star">&#9733;</label>
+</div>
+
+      <p class="results__block-grid--adv-reting">
+        {{ product.rating }}/5-from {{ product.times }} reviews
+      </p>
+    </div>
+  </div>
           <div class="sizeScale">
             <p>FIND YOUR SIZE</p>
             <p>SIZE GUIDE</p>
@@ -60,6 +79,7 @@ To assess compliance, we have developed a programme of audits and continuous imp
         </div>
       </div>
     </div>
+     
   </template>
   
   <script lang="ts">
@@ -78,8 +98,12 @@ interface Product {
 
 export default defineComponent({
   name: 'OneP',
+ 
   data() {
     return {
+
+       selectedRating: 0,
+
       product: {
   id: 0,
   clothesName:"" ,
@@ -102,7 +126,34 @@ export default defineComponent({
     "product_id":2
   });
     },
-   
+
+    addToBag() {
+      window.location.href = `/cart/${this.product.id}`;
+    },
+    update() {
+       const currentUrl = window.location.href;
+    const name = currentUrl.substring(currentUrl.lastIndexOf('/')).split("=")[1].split("+").join(" ")
+    console.log(this.product.times, "this is times")
+    console.log(this.product.rating, "this is rating")
+    console.log(this.selectedRating, "this is selectedRating")
+    var rate = (this.product.rating*this.product.times+Number(this.selectedRating))/this.product.times
+    console.log(rate, "this is rate")
+    
+      axios
+      .put(`http://localhost:5000/api/product/${name}`,{
+        clothesName:this.product.clothesName,
+        image:this.product.image,
+        price:this.product.price,
+        category:this.product.category,
+        rating:rate,
+        times:this.product.times+1,
+      })
+      .then((suc)=>{console.log(suc)
+      window.location.reload
+      console.log(suc.data.times)})
+      .catch((e)=>console.log(e))
+    }
+
   },
   mounted() {
     
@@ -113,7 +164,7 @@ export default defineComponent({
     axios
       .get(`http://localhost:5000/api/product/${name}`)
       .then(response => {
-        console.log(response.data.image)
+        console.log(response.data)
        
   const productData = response.data;
   const obj: Product = {
@@ -148,7 +199,7 @@ export default defineComponent({
 * {
               margin: 0;
               padding: 0;
-              font-family: "Karla", sans-serif;
+              
             }
             #container {
               width: 85%;
@@ -156,6 +207,7 @@ export default defineComponent({
               display: flex;
               margin: auto;
               justify-content: space-between;
+              
             }
             
             /* left side content div  */
@@ -164,6 +216,7 @@ export default defineComponent({
               /* border: 1px solid blue; */
               height: 80%;
               margin-top: 15%;
+              font-family: "Neue-Helvetica","Helvetica","Arial","sans-serif";
             }
             .left_side_content > :nth-child(2) {
               margin-top: 1.5em;
@@ -181,8 +234,9 @@ export default defineComponent({
             
             /* middle image divv  */
             .image_div {
+              margin-top: 4.5em;
               width: 28%;
-              /* border: 1px solid green; */
+              
             }
             .image_div > img {
               width: 100%;
@@ -191,17 +245,20 @@ export default defineComponent({
             /* right side product information div   */
             .product_info_rightSide {
               width: 22%;
-              /* border: 1px solid teal; */
-              padding-top: 3.5em;
+              
+              padding-top: 27.5em;
             }
             .product_name {
               display: flex;
               justify-content: space-between;
-              /* border: 1px solid red; */
+              font-family: "Neue-Helvetica","Helvetica","Arial","sans-serif";
             }
             .product_name > h2 {
-              font-size: 1.2em;
-              font-weight: bold;
+              font-size: 11px;
+              line-height:16px;
+              letter-spacing: 0.8px;
+              font-stretch:normal;
+              font-weight: 300;
             }
             .product_name > img {
               width: 5%;
@@ -296,6 +353,25 @@ export default defineComponent({
             .flex{
               display: flex;
             }
+            .star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 2em;
+    justify-content: space-around;
+    padding: 0 .2em;
+    text-align: center;
+    width: 3em;
+    input {
+            display: none;
+        }
+        label {
+            color: #ccc;
+            cursor: pointer;
+        }
+                :checked~label {
+                    color:gold;
+                }
+}
             
             @media only screen and (min-width: 375px) and (max-width: 768px) {
               .prev,
@@ -312,6 +388,7 @@ export default defineComponent({
             
             
             }
+            
             
             @media only screen and (min-width: 0px) and (max-width: 390px) {
               #bookVdo {
