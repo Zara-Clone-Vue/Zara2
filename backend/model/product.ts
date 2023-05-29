@@ -1,3 +1,4 @@
+//this the model for the product using type ORM
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
 export class product{
